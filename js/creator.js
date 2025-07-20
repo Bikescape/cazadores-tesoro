@@ -111,14 +111,14 @@ window.deleteMission = id => {
 
 async function saveGameHandler() {
   const game = {
-    code: generateCode(),
-    title: document.getElementById('gameTitle').value,
-    story: document.getElementById('gameStory').value,
-    duration: parseInt(document.getElementById('gameDuration').value),
-    initialPoints: parseInt(document.getElementById('initialPoints').value),
-    penaltyPoints: parseInt(document.getElementById('penaltyPoints').value),
-    missions
-  };
+  code: generateCode(),
+  title: document.getElementById('gameTitle').value,
+  story: document.getElementById('gameStory').value,
+  duration: parseInt(document.getElementById('gameDuration').value),
+  initial_points: parseInt(document.getElementById('initialPoints').value),   // guion bajo
+  penalty_points: parseInt(document.getElementById('penaltyPoints').value),   // guion bajo
+  missions: gameState.missions
+};
 
   const { error } = await supabase.from('games').upsert([game]);
   if (error) return alert('Error al guardar: ' + error.message);
