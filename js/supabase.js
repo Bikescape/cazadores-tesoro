@@ -1,5 +1,5 @@
-// 1. Importa Supabase desde CDN
-import { createClient } from 'https://unpkg.com/@supabase/supabase-js@2/dist/supabase.esm.js';
+// CDN oficial de Supabase (sin redirecciones)
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.52.0/+esm';
 
 // 2. Tus claves reales
 const SUPABASE_URL  = 'https://rafqhqpailpvdvvhgvqo.supabase.co'; // reemplaza por la tuya
