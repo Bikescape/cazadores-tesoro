@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creador - Cazadores del Tesoro</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/creator.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+  <div class="creator-container">
+    <header class="creator-header">
+      <h1>🎨 Creador de Aventuras</h1>
+      <button id="saveGame" class="btn-primary">💾 Guardar Juego</button>
+    </header>
+
+    <div class="creator-layout">
+      <aside class="game-settings">
+        <h3>Configuración del Juego</h3>
+        <input type="text" id="gameTitle" placeholder="Título del juego" required/>
+        <textarea id="gameStory" placeholder="Historia (máx 100 palabras)" maxlength="100"></textarea>
+        <div class="settings-grid">
+          <label>Duración (min)<input type="number" id="gameDuration" value="60" min="10" max="180"/></label>
+          <label>Puntos iniciales<input type="number" id="initialPoints" value="100" min="0" max="1000"/></label>
+          <label>Penalización pista<input type="number" id="penaltyPoints" value="10" min="1" max="50"/></label>
+        </div>
+      </aside>
+
+      <main class="mission-editor">
+        <h3>Misiones</h3>
+        <div id="missionsList" class="missions-list"></div>
+        <button id="addMission" class="btn-secondary">➕ Añadir Misión</button>
+      </main>
+
+      <aside class="map-container">
+        <h3>Mapa de Misiones</h3>
+        <div id="map" class="map"></div>
+      </aside>
+    </div>
+
+    <!-- Modal -->
+    <div id="missionModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Configurar Misión</h3>
+        <form id="missionForm">
+          <input type="hidden" id="missionId">
+          <label>Título<input type="text" id="missionTitle" required></label>
+          <label>Descripción<textarea id="missionDescription" maxlength="100"></textarea></label>
+          <label>Tipo
+            <select id="missionType" required>
+              <option value="gps">Ubicación GPS</option>
+              <option value="question">Pregunta/Respuesta</option>
+              <option value="photo">Foto</option>
+            </select>
+          </label>
+          <div id="gpsFields" class="mission-fields">
+            <label>Latitud<input type="number" id="missionLat" step="0.000001"></label>
+            <label>Longitud<input type="number" id="missionLng" step="0.000001"></label>
+            <button type="button" id="getCurrentLocation">📍 Usar mi ubicación</button>
+          </div>
+          <div id="questionFields" class="mission-fields hidden">
+            <label>Pregunta<input type="text" id="missionQuestion"></label>
+            <label>Respuesta correcta<input type="text" id="missionAnswer"></label>
+            <label>
+              Tipo validación
+              <select id="answerType">
+                <option value="exact">Exacta</option>
+                <option value="contains">Contiene texto</option>
+                <option value="number">Número</option>
+              </select>
+            </label>
+          </div>
+          <label>Puntos<input type="number" id="missionPoints" value="10" min="1" max="100"></label>
+          <div class="hints-section">
+            <h4>Pistas</h4>
+            <input class="hint-input" placeholder="Pista 1">
+            <input class="hint-input" placeholder="Pista 2">
+            <input class="hint-input" placeholder="Pista 3">
+          </div>
+          <button type="submit" class="btn-primary">Guardar Misión</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="js/supabase.js"></script>
+  <script type="module" src="js/creator.js"></script>
+</body>
+</html>

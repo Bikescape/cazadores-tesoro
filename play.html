@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jugar - Cazadores del Tesoro</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+  <div id="app">
+    <!-- Pantalla Inicio -->
+    <div id="startScreen" class="screen active">
+      <div class="splash">
+        <h1>🏴‍☠️ ¡Prepárate para la aventura!</h1>
+        <input id="playerName" placeholder="Tu nombre" maxlength="20"/>
+        <input id="gameCode" placeholder="Código del juego" maxlength="6"/>
+        <button id="startGame" class="btn-primary">¡Comenzar!</button>
+      </div>
+    </div>
+
+    <!-- Pantalla Juego -->
+    <div id="gameScreen" class="screen">
+      <header class="game-header">
+        <span id="playerNameDisplay"></span>
+        <span id="timer">00:00</span>
+        <span id="points">100 pts</span>
+      </header>
+
+      <main class="game-main">
+        <div id="missionCard" class="card-mission">
+          <h2 id="missionTitle"></h2>
+          <p id="missionStory"></p>
+          <div id="missionContent"></div>
+
+          <div class="hints-container">
+            <button id="showHint" class="btn-hint">💡 Pista</button>
+            <div id="hintsList" class="hints-list hidden"></div>
+          </div>
+
+          <div id="missionActions">
+            <button id="submitMission" class="btn-primary">Comprobar</button>
+          </div>
+        </div>
+
+        <div id="mapContainer" class="map-container">
+          <div id="gameMap"></div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Pantalla Resultados -->
+    <div id="resultsScreen" class="screen">
+      <div class="results-content">
+        <h1>🎉 ¡Aventura completada!</h1>
+        <div class="final-score">
+          <h2>Tu puntuación</h2>
+          <div id="finalPoints" class="score-display">0</div>
+          <div id="finalTime" class="time-display">00:00</div>
+        </div>
+        <div class="rankings">
+          <h3>Clasificación</h3>
+          <ol id="rankingsList"></ol>
+        </div>
+        <button id="playAgain" class="btn-primary">Jugar otra vez</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="js/supabase.js"></script>
+  <script type="module" src="js/play.js"></script>
+</body>
+</html>
