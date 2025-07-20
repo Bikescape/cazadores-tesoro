@@ -110,19 +110,33 @@ window.deleteMission = id => {
 };
 
 async function saveGameHandler() {
+  const title = document.getElementById('gameTitle').value.trim();
+  const story = document.getElementById('gameStory').value.trim();
+  const duration = parseInt(document.getElementById('gameDuration').value) || 60;
+  const initial_points = parseInt(document.getElementById('initialPoints').value) || 100;
+  const penalty_points = parseInt(document.getElementById('penaltyPoints').value) || 10;
+
+  if (!title) return alert('Escribe un título para el juego');
+
   const game = {
-  code: generateCode(),
-  title: document.getElementById('gameTitle').value,
-  story: document.getElementById('gameStory').value,
-  duration: parseInt(document.getElementById('gameDuration').value),
-  initial_points: parseInt(document.getElementById('initialPoints').value),   // guion bajo
-  penalty_points: parseInt(document.getElementById('penaltyPoints').value),   // guion bajo
-  missions: gameState.missions
-};
+    code: generateCode(),
+    title,
+    story,
+    duration,
+    initial_points,
+    penalty_points,
+    missions
+  };
+
+  console.table(game);
 
   const { error } = await supabase.from('games').upsert([game]);
-  if (error) return alert('Error al guardar: ' + error.message);
-  alert(`¡Juego guardado! Código: ${game.code}`);
+  if (error) {
+    console.error(error);
+    alert('Error al guardar: ' + error.message);
+  } else {
+    alert(`¡Juego guardado! Código: ${game.code}`);
+  }
 }
 
 function generateCode() {
