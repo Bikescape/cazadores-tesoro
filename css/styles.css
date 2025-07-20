@@ -1,0 +1,33 @@
+:root {
+  --primary: #ff6b6b;
+  --secondary: #4ecdc4;
+  --accent: #ffe66d;
+  --dark: #292f36;
+  --light: #f7fff7;
+  --border-radius: 15px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.1);
+  --font-primary: 'Nunito', sans-serif;
+  --font-display: 'Fredoka One', cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-primary); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: var(--dark); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+header { text-align: center; margin-bottom: 40px; color: white; }
+header h1 { font-family: var(--font-display); font-size: 3em; margin-bottom: 10px; }
+
+.home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.card { background: white; border-radius: var(--border-radius); padding: 40px; text-align: center; box-shadow: var(--shadow); transition: transform .3s; text-decoration: none; color: inherit; }
+.card:hover { transform: translateY(-5px); }
+.card-icon { font-size: 4em; margin-bottom: 20px; }
+
+.btn-primary, .btn-secondary { padding: 15px 30px; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-secondary { background: var(--secondary); color: white; }
+
+.screen { display: none; height: 100vh; padding: 20px; }
+.screen.active { display: block; }
+.splash { background: white; border-radius: var(--border-radius); padding: 40px; max-width: 400px; margin: 50px auto; text-align: center; }
+.splash input { width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #ddd; border-radius: 25px; font-size: 1.1em; }

@@ -1,0 +1,244 @@
+/* creator.css - Estilos exclusivos del editor de juegos
+   Se carga solo en creator.html */
+
+:root {
+  --primary: #ff6b6b;
+  --secondary: #4ecdc4;
+  --accent: #ffe66d;
+  --dark: #292f36;
+  --light: #f7fff7;
+  --border-radius: 12px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --font-primary: 'Nunito', sans-serif;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.creator-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: var(--font-primary);
+  background: var(--light);
+  min-height: 100vh;
+}
+
+/* CABECERA DEL CREADOR */
+.creator-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--primary), #ff5252);
+  color: white;
+  padding: 15px 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 25px;
+}
+
+.creator-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* LAYOUT 3 COLUMNAS */
+.creator-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr 350px;
+  gap: 20px;
+}
+
+/* ASIDE - CONFIGURACIÓN */
+.game-settings {
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  align-self: start;
+}
+
+.game-settings h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.settings-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.game-settings label,
+.game-settings input,
+.game-settings textarea {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.game-settings input,
+.game-settings textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* EDITOR DE MISIONES */
+.mission-editor {
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.missions-list {
+  margin-bottom: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.mission-item {
+  background: #fdfdfd;
+  border-left: 4px solid var(--secondary);
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mission-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mission-number {
+  background: var(--secondary);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.mission-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-left: 6px;
+}
+
+.mission-points {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* MAPA */
+.map-container {
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+#map {
+  width: 100%;
+  height: 350px;
+  border-radius: var(--border-radius);
+}
+
+/* MODAL DE MISIONES */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* FORMULARIO MODAL */
+.modal-content label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.mission-fields {
+  margin-top: 8px;
+}
+
+.hints-section input {
+  margin-top: 4px;
+}
+
+/* BOTONES */
+.btn-primary,
+.btn-secondary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .creator-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .creator-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
