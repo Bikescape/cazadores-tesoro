@@ -128,8 +128,6 @@ async function saveGameHandler() {
     missions
   };
 
-  console.table(game);
-
   const { error } = await supabase.from('games').upsert([game]);
   if (error) {
     console.error(error);
@@ -138,7 +136,6 @@ async function saveGameHandler() {
     alert(`¡Juego guardado! Código: ${game.code}`);
   }
 }
-
 function generateCode() {
   return Math.random().toString(36).substring(2, 8).toUpperCase();
 }
